@@ -1,19 +1,10 @@
-import HolbertonCourse from './2-hbtn_course';
+import ClassRoom from './0-classroom';
 
-const c1 = new HolbertonCourse('ES6', 1, ['Bob', 'Jane']);
-console.log(c1.name);
-c1.name = 'Python 101';
-console.log(c1);
+export default function initializeRooms() {
+  const arr = [];
+  arr.push(new ClassRoom(19));
+  arr.push(new ClassRoom(20));
+  arr.push(new ClassRoom(34));
 
-try {
-  c1.name = 12;
-} catch (err) {
-  console.log(err);
-}
-
-try {
-  const c2 = new HolbertonCourse('ES6', '1', ['Bob', 'Jane']);
-  console.log('c2', c2);
-} catch (err) {
-  console.log(err);
+  return arr;
 }
