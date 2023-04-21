@@ -1,3 +1,3 @@
-import handleProfileSignup from './6-final-user.js';
+import handleProfileSignup from "./3-all.js";
 
-console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));
+handleProfileSignup();
