@@ -1,3 +1,8 @@
-import divideFunction from "./8-try.js";
-console.log(divideFunction(10, 2));
-console.log(divideFunction(10, 0));
+import asyncUploadUser from "./100-await.js";
+
+const test = async () => {
+    const value = await asyncUploadUser();
+    console.log(value);
+};
+
+test();
