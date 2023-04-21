@@ -13,5 +13,5 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
     // Push the result object to the resultArray
     resultArray.push({ status, value });
   }
-  return results;
+  return resultArray;
 }
