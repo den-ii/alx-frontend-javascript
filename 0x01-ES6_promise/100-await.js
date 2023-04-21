@@ -1,18 +1,16 @@
 import { uploadPhoto, createUser } from './utils';
+// import uploadPhoto from './5-photo-reject.js';
 
 export default async function asyncUploadUser() {
   const resultObj = {};
   try {
-    const result = await uploadPhoto();
-    resultObj.photo = result;
+    const result1 = await uploadPhoto();
+    const result2 = await createUser();
+    resultObj.user = result1;
+    resultObj.photo = result2;
   } catch (err) {
-    resultObj.photo = {};
-  }
-  try {
-    const result = await createUser();
-    resultObj.user = result;
-  } catch (err) {
-    resultObj.user = {};
+    resultObj.photo = null;
+    resultObj.user = null;
   }
 
   return resultObj;
