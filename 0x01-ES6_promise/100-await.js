@@ -6,8 +6,8 @@ export default async function asyncUploadUser() {
   try {
     const result1 = await uploadPhoto();
     const result2 = await createUser();
-    resultObj.user = result1;
-    resultObj.photo = result2;
+    resultObj.photo = result1;
+    resultObj.user = result2;
   } catch (err) {
     resultObj.photo = null;
     resultObj.user = null;
