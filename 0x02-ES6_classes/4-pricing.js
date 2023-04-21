@@ -32,6 +32,10 @@ export default class Pricing {
     } else throw new Error('currency must be an instance of Currency');
   }
 
+  convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
+  }
+
   displayFullPrice() {
     return `${this._amount} ${this._currency._name} (${this._currency._code})`;
   }
