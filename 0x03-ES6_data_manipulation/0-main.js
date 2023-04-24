@@ -1,3 +1,3 @@
-import createInt8TypedArray from "./5-typed_arrays.js";
+import getListStudents from "./0-get_list_students.js";
 
-console.log(createInt8TypedArray(10, 2, 89));
+console.log(getListStudents());
