@@ -1,56 +1,74 @@
-interface Teacher {
-    readonly firstname: string;
-    readonly lastname: string;
-    fullTimeEmployee: boolean;
-    yearsOfExperience?: number;
-    location: string;
-    [propName: string]: any;
+interface DirectorInterface {
+    workFromHome() :string;
+    getCoffeeBreak(): string;
+    workDirectorTasks(): string;
+
 }
 
-interface Directors extends Teacher {
-    numberofReports: number
+interface TeacherInterface {
+   workFromHome() :string;
+    getCoffeeBreak(): string;
+    workTeacherTasks(): string;
 }
 
-function printTeacher(firstName:string, lastName: string): string {
-    return firstName.charAt(0) + "." + " " + "Doe";
+
+class Director implements DirectorInterface {
+    workFromHome(): string {
+        return 'Working from home';
+     }
+    getCoffeeBreak(): string {
+            return 'Getting a coffee break';
+        }
+    workDirectorTasks(): string {
+            return "Getting to director tasks"
+        }
 }
 
-interface printTeacherFunction {
-    (firstName:string, lastName:string) : string
+class Teacher implements TeacherInterface {
+    workFromHome(): string {
+        return 'Cannot work from home';
+     }
+    getCoffeeBreak(): string {
+            return 'Cannot have a break';
+        }
+    workTeacherTasks(): string {
+            return "Getting to work"
+        }
 }
-interface IStudent {
-    firstName: string;
-    lastName: string;
-    displayName(): string;
-    workOnHomework(): string;
-  }
-  
-  interface IStudentConstructor {
-    new(firstName: string, lastName: string): IStudent;
-  }
 
-class StudentClass implements IStudent {
-    firstName: string
-    lastName: string
-    constructor(firstName:string, lastName: string) {
-        this.firstName = firstName;
-        this.lastName 
+function createEmployee(salary:number|string):TeacherInterface|DirectorInterface{
+    if (+salary < 500){
+        return new Teacher()
+    }
+    else {
+        return new Director()
     }
     
-    workOnHomework(): string {
-        return "Currently working"
-    }
-    displayName(): string {
-        return this.firstName
-    }
-
 }
 
-// The class has a method named displayName. It returns the firstName of the student
-// The constructor of the class should be described through an Interface
-// The class should be described through an Interface
-// Requirements:
+function isDirector(employee:any) : employee is Director {
+    return employee instanceof Director
+}
 
-// You can reuse the Webpack configuration from the previous exercise to compile the code.
-// When running npm run build, no TypeScript error should be displayed.
-// Every variable should use TypeScript when possib
+function executeWork(employee:any){
+    if (employee instanceof Director) {
+        console.log(employee.workDirectorTasks())
+    }
+    else if (employee instanceof Teacher) {
+        console.log(employee.workTeacherTasks())
+    }
+}
+executeWork(createEmployee(200));
+executeWork(createEmployee(1000));
+
+
+type Subjects = "Math"|"History"
+
+function teachClass(todayClass: Subjects): string {
+    if (todayClass === "Math") {
+        return ("Teaching Math")
+    }
+    else if (todayClass === "History") {
+        return ("Teaching History")
+    }
+}
